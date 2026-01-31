@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package thuchanh1;
 import java.util.*;
 import java.io.File;
@@ -88,4 +85,5 @@ public class HotelService {
         register("0123456789");
         login("0123456789", "123456");
     }
+
 }
