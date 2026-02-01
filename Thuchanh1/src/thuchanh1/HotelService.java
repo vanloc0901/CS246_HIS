@@ -54,19 +54,17 @@ public class HotelService {
             return false;
         }
     }
-    // Submit special requests
+     // REWORK D04: Kiểm tra danh sách rỗng
     public static boolean submitRequests(List<Integer> serviceIds) {
-        if (serviceIds != null) {
+        if (serviceIds != null && !serviceIds.isEmpty()) {
             return true;
         }
         return false;
     }
 
-    // Feedback
     public static void sendFeedback(int bookingId, int value) {
         feedbackStore.put(bookingId, value);
     }
-
     // View history
     public static List<String> viewHistory(int userId, int page) {
         if (page < 0) {
@@ -90,6 +88,7 @@ public class HotelService {
     }
 
 }
+
 
 
 
