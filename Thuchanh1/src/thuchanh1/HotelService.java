@@ -3,13 +3,13 @@ package thuchanh1;
 import java.util.*;
 import java.io.File;
 public class HotelService {
-
     private static Map<String, String> otpStore = new HashMap<>();
     private static Map<Integer, Integer> feedbackStore = new HashMap<>();
 
-    // Registration
+    
+    //REWORK D01: Thêm kiểm tra số 0 ở đầu SĐT
     public static boolean register(String phone) {
-        if (phone == null || phone.length() != 10) {
+        if (phone == null || phone.length() != 10 ||!phone.startsWith("0") ) {
             return false;
         }
         sendOtp(phone);
@@ -87,3 +87,4 @@ public class HotelService {
     }
 
 }
+
