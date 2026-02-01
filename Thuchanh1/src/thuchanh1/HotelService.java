@@ -36,19 +36,24 @@ public class HotelService {
         }
         return false;
     }
-    // Upload ID image
+    //REWORK D03 & D07: Sửa công thức tính dung lượng và thêm try-catch
     public static boolean uploadImage(File file) {
-        if (file == null) return false;
+        try {
+            if (file == null || !file.exists()) return false;
 
-        String fileName = file.getName().toLowerCase();
-        if (!(fileName.endsWith(".jpg") || fileName.endsWith(".png"))) {
+            String fileName = file.getName().toLowerCase();
+            // Bổ sung thêm định dạng theo PBI
+            if (!(fileName.endsWith(".jpg") || fileName.endsWith(".png") || fileName.endsWith(".heic"))) {
+                return false;
+            }
+
+            // Tính theo chuẩn 1024
+            double sizeInMb = (double) file.length() / 1024 / 1024;
+            return sizeInMb <= 10;
+        } catch (Exception e) {
             return false;
         }
-
-        long sizeInMb = file.length() / 1000 / 1000;
-        return sizeInMb <= 10;
     }
-
     // Submit special requests
     public static boolean submitRequests(List<Integer> serviceIds) {
         if (serviceIds != null) {
@@ -85,5 +90,6 @@ public class HotelService {
     }
 
 }
+
 
 
