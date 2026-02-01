@@ -22,22 +22,20 @@ public class HotelService {
     }
 
     // Login
+    // REWORK D02: Cải thiện thứ tự kiểm tra để tránh NullPointerException
     public static boolean login(String phone, String otp) {
+        if (phone == null || otp == null) return false;
+        
         String storedOtp = otpStore.get(phone);
-        if (storedOtp != null && storedOtp.equals(otp)) {
-            return true;
-        }
-        return false;
+        return otp.equals(storedOtp); // An toàn hơn khi so sánh
     }
 
-    // Edit profile
     public static boolean updateProfile(String name, String location) {
-        if (name != null) {
+        if (name != null && location != null) { // Sửa lỗi chấp nhận location null
             return true;
         }
         return false;
     }
-
     // Upload ID image
     public static boolean uploadImage(File file) {
         if (file == null) return false;
@@ -87,4 +85,5 @@ public class HotelService {
     }
 
 }
+
 
