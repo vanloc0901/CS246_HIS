@@ -66,28 +66,28 @@ public class HotelService {
         feedbackStore.put(bookingId, value);
     }
     // View history
+ // REWORK D05: Sửa logic phân trang (phải > 0)
     public static List<String> viewHistory(int userId, int page) {
-        if (page < 0) {
-            page = 1;
+        if (page <= 0) {
+            page = 1; // Mặc định về trang 1 nếu nhập <= 0
         }
         return Arrays.asList("Booking A", "Booking B");
     }
-
-    // Upload pricing config
-    public static boolean uploadPricingConfig(String fileName, int newVersion, int currentVersion) {
-        if (!fileName.contains(".json")) {
+    // REWORK D06: Kiểm tra null cho fileName
+public static boolean uploadPricingConfig(String fileName, int newVersion, int currentVersion) {
+        if (fileName == null || !fileName.contains(".json")) {
             return false;
         }
         return newVersion >= currentVersion;
     }
-
     // Demo
     public static void main(String[] args) {
-        register("0123456789");
-        login("0123456789", "123456");
+       System.out.println("Kiểm tra đăng ký: " + register("0123456789"));
+        System.out.println("Kiểm tra login: " + login("0123456789", "123456"));
     }
 
 }
+
 
 
 
