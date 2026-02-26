@@ -5,7 +5,7 @@ import java.io.File;
 public class HotelService {
     private static Map<String, String> otpStore = new HashMap<>();
     private static Map<Integer, Integer> feedbackStore = new HashMap<>();
-
+//for git demo
     
     //REWORK D01: Thêm kiểm tra số 0 ở đầu SĐT
     public static boolean register(String phone) {
